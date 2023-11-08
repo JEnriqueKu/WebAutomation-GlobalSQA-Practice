@@ -8,7 +8,7 @@ public class HomePage3 extends BasePage {
         super(driver);
     }
 
-    public void closePage3(){
-        closeCurrentPage();
+    public void closeCurrentPage(){
+        closePage();
     }
 }

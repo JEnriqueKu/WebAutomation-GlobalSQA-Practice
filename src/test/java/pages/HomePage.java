@@ -28,10 +28,24 @@ public class HomePage extends BasePage {
 
     public void switchToPage2(){
         Set<String> handles = getCurrentWindowHandles();
+        for (String handle : handles) {
+            System.out.println(handle);
+        }
         getDriver().switchTo().window(handles.toArray()[1].toString());
     }
 
-    public void navigateToAlerts(){
+    public void switchToPage1(){
+        String currentPageHandle = getDriver().getWindowHandle();
+        System.out.println(currentPageHandle);
+        getDriver().switchTo().window(currentPageHandle);
+    }
+
+    public void closeAdAlert(){
+        closeAlert();
+    }
+
+    public AlertsPage navigateToAlerts(){
         navigateTo("https://demo.automationtesting.in/Alerts.html");
+        return new AlertsPage(getDriver());
     }
 }

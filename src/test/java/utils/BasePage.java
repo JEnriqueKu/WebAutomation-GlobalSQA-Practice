@@ -1,9 +1,6 @@
 package utils;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,41 +27,53 @@ public class BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    public WebDriver getDriver() {
+    protected WebDriver getDriver() {
         return driver;
     }
 
-    public void navigateTo(String url){
+    protected void navigateTo(String url){
         driver.get(url);
     }
 
-    public void waitForElementToBeClickable(WebElement element){
+    protected void waitForElementToBeClickable(WebElement element){
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
 
-    public void waitForElementToBeVisible(WebElement element){
+    protected void waitForElementToBeVisible(WebElement element){
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void scrollDownPage(){
+    protected void waitForElementToBeInvisible(WebElement element){
+        wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+
+    protected void scrollDown(){
         actions.scrollByAmount(0,200).perform();
     }
 
-    public void switchToIFrameByName(String iFrameId){
+    protected void switchToIFrameByName(String iFrameId){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(iFrameId)));
         driver.switchTo().frame(iFrameId);
     }
 
-    public void switchToParentFrame(){
+    protected void switchToParentFrame(){
         driver.switchTo().parentFrame();
     }
 
-    public Set<String> getCurrentWindowHandles(){
+    protected void closeAlert(){
+        driver.switchTo().alert().dismiss();
+    }
+
+    protected void clickOnAlertButton(){
+        driver.switchTo().alert().accept();
+    }
+
+    protected Set<String> getCurrentWindowHandles(){
         return getDriver().getWindowHandles();
     }
 
-    public void closeCurrentPage(){
+    protected void closePage(){
         driver.close();
     }
 

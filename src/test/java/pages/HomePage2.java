@@ -14,23 +14,21 @@ public class HomePage2 extends BasePage {
     }
 
     @FindBy(id = "iFrame")
-    WebElement iframeButton;
+    private WebElement iframeButton;
     @FindBy(id = "portfolio_filter")
-    WebElement trainings;
+    private WebElement trainings;
     @FindBy(css = "div[data-option-value='.softwaretesting']")
-    WebElement softwareTestingButton;
+    private WebElement softwareTestingButton;
     @FindBy(css = "a[href='https://www.globalsqa.com/training/manual-testing-training/']")
-    WebElement manualTesting;
+    private WebElement manualTesting;
     @FindBy(css = "#jp-relatedposts")
-    WebElement relatedPosts;
-    @FindBy(id = "Course Content")
-    WebElement courseContent;
+    private WebElement relatedPosts;
     @FindBy(className = "page_heading")
-    WebElement pageHeading;
+    private WebElement pageHeading;
     @FindAll(@FindBy(css = "div.sixteen.columns h3 strong"))
-    List<WebElement> subHeaders;
+    private List<WebElement> subHeaders;
     @FindBy(id = "menu-item-2816")
-    WebElement alerBox;
+    private WebElement alertBox;
 
 
     public void clickOnIFrame(){
@@ -52,15 +50,19 @@ public class HomePage2 extends BasePage {
         waitForElementToBeClickable(softwareTestingButton);
     }
 
+    public void scrollDownInPage(){
+        scrollDown();
+    }
+
+    public void waitForTrainingsButtonToBeInvisible(){
+        waitForElementToBeInvisible(trainings);
+    }
+
     public void clickOnManualTesting() {
         waitForElementToBeVisible(manualTesting);
         waitForElementToBeClickable(manualTesting);
     }
 
-    public String courseContent(){
-        waitForElementToBeVisible(courseContent);
-        return courseContent.getText();
-    }
     public String subHeader1(){
         waitForElementToBeVisible(subHeaders.get(0));
         return subHeaders.get(0).getText();
@@ -77,7 +79,7 @@ public class HomePage2 extends BasePage {
     }
 
     public HomePage3 clickOnAlertBox(){
-        waitForElementToBeClickable(alerBox);
+        waitForElementToBeClickable(alertBox);
         return new HomePage3(getDriver());
     }
 
