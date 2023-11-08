@@ -1,0 +1,10 @@
+<suite name="WebAutomation-GlobalSQA-Practice">
+    <parameter name="url" value="https://www.globalsqa.com/demo-site/frames-and-windows/"/>
+    <parameter name="browser" value="chrome"/>
+
+    <test name="IFrame Test">
+        <classes>
+            <class name="tests.GlobalSQATest"/>
+        </classes>
+    </test>
+</suite>
