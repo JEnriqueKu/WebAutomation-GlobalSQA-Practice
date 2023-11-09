@@ -24,19 +24,19 @@ public class GlobalSQATest extends BaseTest {
         homePage2.scrollDownInPage();
         homePage2.clickOnManualTesting();
         homePage2.waitForTrainingsButtonToBeInvisible();
-        assertEquals(homePage2.pageHeadingText(),"Manual Testing Training");
-        assertEquals(homePage2.subHeader1(),"About Testing");
-        assertEquals(homePage2.subHeader2(),"Manual Testing Training Overview");
+        assertEquals("Manual Testing Training",homePage2.pageHeadingText());
+        assertEquals("About Testing",homePage2.subHeader1());
+        assertEquals("Manual Testing Training Overview",homePage2.subHeader2());
         homePage2.exitIFrame();
         homePage2.scrollDownInPage();
         HomePage3 homePage3 = homePage2.clickOnAlertBox();
         homePage3.closeCurrentPage();
-        /*homePage.switchToPage1();
-        homePage.closeAdAlert();
+        homePage.switchToPage1();
+        homePage.exitIFrame();
         AlertsPage alertsPage = homePage.navigateToAlerts();
-        alertsPage.clickOnAlertWithOkButton();
-        alertsPage.acceptAlert();
-
-         */
+        alertsPage.clickOnAlertWithOkAndCancelButton();
+        alertsPage.clickOnDisplayConfirmButton();
+        alertsPage.cancelAlert();
+        assertEquals("You Pressed Cancel",alertsPage.getConfirmText());
     }
 }

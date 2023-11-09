@@ -19,7 +19,7 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(15))
+                .withTimeout(Duration.ofSeconds(8))
                         .pollingEvery(Duration.ofMillis(500))
                                 .ignoring(NoSuchElementException.class);
 
@@ -53,20 +53,17 @@ public class BasePage {
     }
 
     protected void switchToIFrameByName(String iFrameId){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(iFrameId)));
-        driver.switchTo().frame(iFrameId);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(iFrameId)));
+            driver.switchTo().frame(iFrameId);
+
     }
 
     protected void switchToParentFrame(){
         driver.switchTo().parentFrame();
     }
 
-    protected void closeAlert(){
+    protected void clickCancelOnAlertButton(){
         driver.switchTo().alert().dismiss();
-    }
-
-    protected void clickOnAlertButton(){
-        driver.switchTo().alert().accept();
     }
 
     protected Set<String> getCurrentWindowHandles(){

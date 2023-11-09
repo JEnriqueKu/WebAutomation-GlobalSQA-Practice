@@ -21,8 +21,6 @@ public class HomePage2 extends BasePage {
     private WebElement softwareTestingButton;
     @FindBy(css = "a[href='https://www.globalsqa.com/training/manual-testing-training/']")
     private WebElement manualTesting;
-    @FindBy(css = "#jp-relatedposts")
-    private WebElement relatedPosts;
     @FindBy(className = "page_heading")
     private WebElement pageHeading;
     @FindAll(@FindBy(css = "div.sixteen.columns h3 strong"))

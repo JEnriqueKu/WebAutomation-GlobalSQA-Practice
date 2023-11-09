@@ -1,5 +1,7 @@
 package pages;
 
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +20,7 @@ public class HomePage extends BasePage {
     @FindBy(css = "div.resp-tab-content.resp-tab-content-active a.button_hilite")
     WebElement clickHere;
 
+
     public void clickOnOpenNewTab(){
         waitForElementToBeClickable(openNewTab);
     }
@@ -28,20 +31,18 @@ public class HomePage extends BasePage {
 
     public void switchToPage2(){
         Set<String> handles = getCurrentWindowHandles();
-        for (String handle : handles) {
-            System.out.println(handle);
-        }
+
         getDriver().switchTo().window(handles.toArray()[1].toString());
     }
 
     public void switchToPage1(){
-        String currentPageHandle = getDriver().getWindowHandle();
-        System.out.println(currentPageHandle);
-        getDriver().switchTo().window(currentPageHandle);
+        Set<String> handles = getCurrentWindowHandles();
+
+        getDriver().switchTo().window(handles.toArray()[0].toString());
     }
 
-    public void closeAdAlert(){
-        closeAlert();
+    public void exitIFrame(){
+        switchToParentFrame();
     }
 
     public AlertsPage navigateToAlerts(){

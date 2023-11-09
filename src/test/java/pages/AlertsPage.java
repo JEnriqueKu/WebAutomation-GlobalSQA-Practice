@@ -10,14 +10,27 @@ public class AlertsPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(css = "#OKTab .btn")
-    private WebElement alertWithOkButton;
+    @FindBy(css = "#CancelTab .btn")
+    private WebElement displayConfirmBoxButton;
 
-    public void clickOnAlertWithOkButton(){
-        waitForElementToBeClickable(alertWithOkButton);
+    @FindBy(css = ".nav.nav-tabs.nav-stacked [href='#CancelTab']")
+    private WebElement alertWithOkAndCancelButton;
+    @FindBy(id = "demo")
+    private WebElement confirmText;
+
+    public void clickOnAlertWithOkAndCancelButton(){
+        waitForElementToBeClickable(alertWithOkAndCancelButton);
     }
 
-    public void acceptAlert(){
-        clickOnAlertButton();
+    public void clickOnDisplayConfirmButton(){
+        waitForElementToBeClickable(displayConfirmBoxButton);
+    }
+
+    public void cancelAlert(){
+        clickCancelOnAlertButton();
+    }
+
+    public String getConfirmText(){
+        return confirmText.getText();
     }
 }
